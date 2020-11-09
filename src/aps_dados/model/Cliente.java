@@ -5,6 +5,7 @@
  */
 package aps_dados.model;
 
+import java.sql.Date;
 /**
  *
  * @author brian
@@ -15,7 +16,7 @@ public class Cliente {
     private String Nr_Rg;
     private String Nr_Cpf;
     private String Nr_Tel;
-    private String Dt_Nascimento;
+    private Date Dt_Nascimento;
     private int ID_Endereco;
 
     public int getID_Cliente() {
@@ -58,11 +59,11 @@ public class Cliente {
         this.Nr_Tel = Nr_Tel;
     }
 
-    public String getDt_Nascimento() {
+    public Date getDt_Nascimento() {
         return Dt_Nascimento;
     }
 
-    public void setDt_Nascimento(String Dt_Nascimento) {
+    public void setDt_Nascimento(Date Dt_Nascimento) {
         this.Dt_Nascimento = Dt_Nascimento;
     }
 
