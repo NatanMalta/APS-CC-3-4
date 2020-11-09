@@ -49,7 +49,7 @@ public class ClienteDAO {
             PreparedStatement stmt = con.prepareStatement(instrucao);
             stmt.setString(1, nome);
             ResultSet resultado = stmt.executeQuery();
-            while(resultado.next) {
+            while(resultado.next()) {
                 Cliente novoCliente = new Cliente();
                 novoCliente.setID_Cliente(resultado.getInt("ID_Cliente"));
                 novoCliente.setNm_Cliente(resultado.getString("Nm_Cliente"));
