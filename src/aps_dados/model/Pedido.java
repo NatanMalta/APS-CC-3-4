@@ -18,6 +18,10 @@ public class Pedido {
         return ID_Pedido;
     }
 
+    public void setID_Pedido(int ID_Pedido) {
+        this.id_Pedido = ID_Pedido;
+    }
+
     public int getID_Cliente() {
         return ID_Cliente;
     }

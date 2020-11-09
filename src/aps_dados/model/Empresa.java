@@ -20,6 +20,10 @@ public class Empresa {
         return ID_Empresa;
     }
 
+    public void setID_Empresa(int ID_Empresa) {
+        this.ID_Empresa = ID_Empresa;
+    }
+
     public String getNm_Empresa() {
         return Nm_Empresa;
     }

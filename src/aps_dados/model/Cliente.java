@@ -23,6 +23,10 @@ public class Cliente {
         return ID_Cliente;
     }
 
+    public void setID_Cliente(int ID_Cliente) {
+        this.ID_Cliente = ID_Cliente;
+    }
+
     public String getNm_Cliente() {
         return Nm_Cliente;
     }
