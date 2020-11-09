@@ -19,7 +19,7 @@ public class Pedido {
     }
 
     public void setID_Pedido(int ID_Pedido) {
-        this.id_Pedido = ID_Pedido;
+        this.ID_Pedido = ID_Pedido;
     }
 
     public int getID_Cliente() {
