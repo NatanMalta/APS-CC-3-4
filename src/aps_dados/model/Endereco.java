@@ -23,10 +23,6 @@ public class Endereco {
         return ID_Endereco;
     }
 
-    public void setID_Endereco(int ID_Endereco) {
-        this.ID_Endereco = ID_Endereco;
-    }
-
     public String getNm_Rua() {
         return Nm_Rua;
     }
