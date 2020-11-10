@@ -20,8 +20,8 @@ public class Conexao {
         mensagem = "";
         try {
             if(con == null || con.isClosed()) {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=APS_Banco",
-                        "sa", "adminpassword");
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost\\LAPTOP-1J7659NK:1433;databaseName=BancoDe Dados_APS ",
+                        "sa", "unip");
             }
         }
         catch (Exception e) {
