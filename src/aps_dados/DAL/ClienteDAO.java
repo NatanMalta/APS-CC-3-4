@@ -45,9 +45,9 @@ public class ClienteDAO {
         try {
             Connection con = Conexao.getCon();
             List<Cliente> listaClientes = new ArrayList<>();
-            String instrucao = "select * from Tb_Cliente where Nm_Cliente like %?%";
+            String instrucao = "select * from Tb_Cliente where Nm_Cliente like ? ";
             PreparedStatement stmt = con.prepareStatement(instrucao);
-            stmt.setString(1, nome);
+            stmt.setString(1, "%" + nome + "%");
             ResultSet resultado = stmt.executeQuery();
             while(resultado.next()) {
                 Cliente novoCliente = new Cliente();
@@ -64,7 +64,7 @@ public class ClienteDAO {
             return listaClientes;
         }
         catch (SQLException e) {
-            mensagem = "Erro ao pesquisar clientes.";
+            mensagem = e.getMessage();
         }
         return null;
     }

@@ -6,6 +6,8 @@
 package aps_Formulario;
 
 import aps_dados.model.Cliente;
+import aps_dados.model.Controle;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +22,21 @@ public class FrmConsulta extends javax.swing.JDialog {
     public FrmConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    
+    void preencherTabela(List<Cliente> pesquisarPorNome)
+    {
+        //tblPesquisaPessoas.setModel(new DefaultTableModel(new Object[][]{}, new String[] {"ID", "NOME", "RG", "CPF"}));
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        pesquisarPorNome.forEach((Cliente p) -> {
+            modelo.addRow(new Object[]
+            {
+                "",p.getNm_Cliente(), p.getNr_Cpf(), p.getNr_Tel()
+            });
+        });
     }
 
     /**
@@ -196,6 +213,15 @@ public class FrmConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_txfNomeActionPerformed
 
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
+        Controle controle = new Controle();
+        Cliente cliente = new Cliente();
+        cliente.setNm_Cliente(txfNome.getText());
+        List<Cliente> pesquisarPorNome = controle.pesquisarPorNome(cliente);
+        
+        if (pesquisarPorNome != null)
+        {
+            preencherTabela(pesquisarPorNome);
+        }
         
     }//GEN-LAST:event_btnPesquisarClienteActionPerformed
 

@@ -1,27 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aps_dados.model;
 
-import java.util.ArrayList;
+import aps_dados.DAL.ClienteDAO;
 import java.util.List;
 
 /**
  *
  * @author muril
  */
-public class Controle {
+public class Controle
+{
     
-    private static String mensagem;
-    aps_dados.DAL.ClienteDAO ClienteDAO = new aps_dados.DAL.ClienteDAO();
+    private String mensagem;
     
-    public static List<Cliente> pesquisarClientePorNome(String nome)
+    
+    public List<Cliente> pesquisarPorNome(Cliente cliente)
     {
-        mensagem = "";
+        Validacao validacao = new Validacao();
+        validacao.ValidarCliente(cliente.getNm_Cliente());
         
-        List<String> listaDadosPessoa = new ArrayList<>();
-        
+        if(validacao.getMensagem().equals(""))
+        {
+            List<Cliente> listaClientes = ClienteDAO.pesquisarPorNome(cliente.getNm_Cliente());
+            
+            if(listaClientes != null)
+            {
+                return listaClientes;
+            }            
+        }      
+        return null;
     }
 }

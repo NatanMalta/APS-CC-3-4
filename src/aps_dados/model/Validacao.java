@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aps_dados.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -21,9 +15,15 @@ public class Validacao {
     private Endereco endereco;
     private Pedido pedido;
     
-    public void ValidarCliente(Cliente cliente)
+    public Validacao()
     {
         this.mensagem = "";
+    }
+    
+    
+    public void ValidarCliente(Cliente cliente)
+    {
+        
         this.cliente = cliente;
         if (cliente.getNm_Cliente().length() < 3)
             this.mensagem += "Nome deve ter mais que 3 caracteres \n";
@@ -38,9 +38,16 @@ public class Validacao {
         
     }
     
+    public void ValidarCliente(String Nm_Cliente)
+    {
+        
+        if (Nm_Cliente.length() < 3)
+            this.mensagem += "Nome deve ter mais que 3 caracteres \n";
+    }
+    
     public void ValidarEmpresa(Empresa empresa)
     {
-        this.mensagem = "";
+        
         this.empresa = empresa;
         if(empresa.getNm_Empresa().length() <3)
             this.mensagem += "Nome muito pequeno";
@@ -54,7 +61,7 @@ public class Validacao {
     
     public void ValidarEndereco(Endereco endereco)
     {
-        this.mensagem = "";
+        
         this.endereco = endereco;
         if(endereco.getNm_Rua().length() > 150)
             this.mensagem += "Rua invalida muito grande";
@@ -69,5 +76,12 @@ public class Validacao {
         if(endereco.getUs_Estado().length() > 2)
             this.mensagem += "Siglas invalidas Maior que 2 siglas";
     }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+    
+    
+    
     
 }
