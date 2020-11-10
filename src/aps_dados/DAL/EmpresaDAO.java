@@ -59,4 +59,30 @@ public class EmpresaDAO {
             mensagem = "Ocorreu um erro ao deletar a empresa de ID " + id;
         }
     }
+    public static List<Empresa> pesquisarPorNome(String nome) {
+        mensagem = "";
+        try {
+            Connection con = Conexao.getCon();
+            List<Empresa> listaEmpresas = new ArrayList<>();
+            String instrucao = "select * from Tb_Empresa where Nm_Empresa like %?%";
+            PreparedStatement stmt = con.prepareStatement(instrucao);
+            stmt.setString(1, nome);
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()) {
+                Empresa novaEmpresa = new Empresa();
+                novaEmpresa.setID_Empresa(resultado.getInt("ID_Empresa"));
+                novaEmpresa.setNm_Empresa(resultado.getString("Nm_Empresa"));
+                novaEmpresa.setNr_Cnpj(resultado.getString("Nr_Cnpj"));
+                novaEmpresa.setNr_Tel(resultado.getString("Nr_Tel"));
+                novaEmpresa.setID_Endereco(resultado.getInt("ID_Endereco"));
+                listaEmpresas.add(novaEmpresa);
+            }
+            mensagem = "A pesquisa retornou " + listaEmpresas.size() + " resultados.";
+            return listaEmpresas;
+        }
+        catch (Exception e) {
+            mensagem = "Erro ao pesquisar por empresas no banco de dados.";
+        }
+        return null;
+    }
 }

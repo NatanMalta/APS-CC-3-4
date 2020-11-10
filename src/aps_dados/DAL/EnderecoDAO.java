@@ -23,7 +23,7 @@ public class EnderecoDAO {
         try {
             Connection con = Conexao.getCon();
             String instrucao = "insert into Tb_Endereco (Nm_Rua, Nr_Casa, Nm_Bairro, Nr_Cep, Nm_Cidade, Nm_Estado, Us_Estado)"
-                    + "values ?, ?, ?, ?, ?, ?, ?";
+                    + "values( ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(instrucao);
             stmt.setString(1, endereco.getNm_Rua());
             stmt.setInt(2, endereco.getNr_Casa());
