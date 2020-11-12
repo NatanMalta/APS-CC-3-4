@@ -6,6 +6,8 @@
 package aps_dados.DAL;
 
 import aps_dados.model.Cliente;
+import aps_dados.model.Endereco;
+import aps_dados.model.Pedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,4 +70,59 @@ public class ClienteDAO {
         }
         return null;
     }
+    
+    
+    
+    public static List<List> pedido() {
+        mensagem = "";
+        try {
+            Connection con = Conexao.getCon();
+            List<List> listaClientes = new ArrayList<>();
+            String instrucao = "select p.ID_Pedido, c.Nm_Cliente, e.Nm_Rua, e.Nm_Bairro, e.Nr_Lat, e.Nr_Lon, e.Nm_Cidade from TB_Cliente as c inner join TB_Pedido as p on c.ID_Cliente = p.ID_Cliente inner join TB_Endereco as e on c.ID_Endereco = e.ID_Endereco";
+            PreparedStatement stmt = con.prepareStatement(instrucao);
+
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()) {
+                
+                List<List> Clientes = new ArrayList<>();
+                Cliente novoCliente = new Cliente();
+                Endereco novoEndereco = new Endereco();
+                Pedido novoPedido = new Pedido();
+                
+                
+                novoCliente.setNm_Cliente(resultado.getString("Nm_Cliente"));
+                
+                novoEndereco.setNm_Rua(resultado.getString("Nm_Rua"));
+                novoEndereco.setNm_Bairro(resultado.getString("Nm_Bairro"));
+                novoEndereco.setNr_Lat(resultado.getString("Nr_Lat"));
+                novoEndereco.setNr_Lon(resultado.getString("Nr_Lon"));
+                novoEndereco.setNm_Cidade(resultado.getString("Nm_Cidade"));
+                
+                novoPedido.setID_Pedido(resultado.getInt("ID_Pedido"));
+                
+                Clientes.add((List) novoCliente);
+                Clientes.add((List) novoEndereco);
+                Clientes.add((List) novoPedido);
+                listaClientes.add(Clientes);
+            }
+            mensagem = "Sua pesquisa retornou " + listaClientes.size() + " resultados.";
+            return listaClientes;
+        }
+        catch (SQLException e) {
+            mensagem = e.getMessage();
+        }
+        return null;
+    }
+    
+    
+    
+    
 }
+
+
+
+
+
+
+
+

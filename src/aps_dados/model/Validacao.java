@@ -7,7 +7,7 @@ package aps_dados.model;
  * @author muril
  */
 public class Validacao {
-    private String mensagem;
+    private static String mensagem;
     private static String identificacao;
     private static int id;
     private Cliente cliente;
@@ -15,10 +15,6 @@ public class Validacao {
     private Endereco endereco;
     private Pedido pedido;
     
-    public Validacao()
-    {
-        this.mensagem = "";
-    }
     
     
     public void ValidarCliente(Cliente cliente)
@@ -38,30 +34,30 @@ public class Validacao {
         
     }
     
-    public void ValidarCliente(String Nm_Cliente)
+    public static void ValidarCliente(String Nm_Cliente)
     {
-        
+        mensagem = "";
         if (Nm_Cliente.length() < 3)
-            this.mensagem += "Nome deve ter mais que 3 caracteres \n";
+            mensagem += "Nome deve ter mais que 3 caracteres \n";
     }
     
-    public void ValidarEmpresa(Empresa empresa)
+    public static void ValidarEmpresa(Empresa empresa)
     {
-        
-        this.empresa = empresa;
+        mensagem = "";
+
         if(empresa.getNm_Empresa().length() <3)
-            this.mensagem += "Nome muito pequeno";
+            mensagem += "Nome muito pequeno";
         if(empresa.getNm_Empresa().length() > 150)
-            this.mensagem += "nome da empresa muito grando";
+            mensagem += "nome da empresa muito grando";
         if(empresa.getNr_Cnpj().length() > 14)
-            this.mensagem += "CNPJ invalido maior que 14";
+            mensagem += "CNPJ invalido maior que 14";
         if(empresa.getNr_Tel().length() > 11)
-            this.mensagem += "Numero telefone Invalido acima de 11 numeros";
+            mensagem += "Numero telefone Invalido acima de 11 numeros";
     }
     
     public void ValidarEndereco(Endereco endereco)
     {
-        
+        mensagem = "";
         this.endereco = endereco;
         if(endereco.getNm_Rua().length() > 150)
             this.mensagem += "Rua invalida muito grande";
@@ -77,11 +73,8 @@ public class Validacao {
             this.mensagem += "Siglas invalidas Maior que 2 siglas";
     }
 
-    public String getMensagem() {
+    public static String getMensagem() {
         return mensagem;
     }
-    
-    
-    
-    
+ 
 }

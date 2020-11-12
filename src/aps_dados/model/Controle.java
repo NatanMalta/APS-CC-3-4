@@ -1,6 +1,7 @@
 package aps_dados.model;
 
 import aps_dados.DAL.ClienteDAO;
+import aps_dados.DAL.EmpresaDAO;
 import java.util.List;
 
 /**
@@ -10,10 +11,10 @@ import java.util.List;
 public class Controle
 {
     
-    private String mensagem;
+    private static String mensagem;
     
     
-    public List<Cliente> pesquisarPorNome(Cliente cliente)
+    public static List<Cliente> pesquisarPorNome(Cliente cliente)
     {
         Validacao validacao = new Validacao();
         validacao.ValidarCliente(cliente.getNm_Cliente());
@@ -28,5 +29,29 @@ public class Controle
             }            
         }      
         return null;
+        
+        
+        
     }
+    
+    public static List<Empresa> pesquisarEmpresa(Empresa empresa)
+    {
+         
+        
+        Validacao.ValidarEmpresa(empresa);
+       
+        if(Validacao.getMensagem().equals(""))
+        {
+            List<Empresa> nomesEmpresa = EmpresaDAO.pesquisarPorNome(empresa.getNm_Empresa());
+            
+            
+            if(nomesEmpresa == null)
+            {
+                return nomesEmpresa;
+            }
+            
+        }
+                
+        return null;
+    }  
 }

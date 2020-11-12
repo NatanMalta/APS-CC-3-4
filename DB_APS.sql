@@ -11,7 +11,9 @@ create table TB_Endereco(
     Nr_Cep varchar (9),
     Nm_Cidade varchar (150),
     Nm_Estado varchar (50),
-    Us_Estado varchar (2)
+    Us_Estado varchar (2),
+    Nr_Lat varchar (12),
+    Nr_Lon varchar (12)
 );
 
 create table TB_Cliente(
@@ -26,6 +28,8 @@ create table TB_Cliente(
 
 );
 
+
+/*
 create table TB_Empresa(
     ID_Empresa int primary key identity(1,1),
     Nm_Empresa varchar(150),
@@ -34,11 +38,12 @@ create table TB_Empresa(
     ID_Endereco int,
     foreign key (ID_Endereco) references TB_Endereco(ID_Endereco)
 );
+*/
 
 create table TB_Pedido(
     ID_Pedido int primary key identity(1000001,1),
     ID_Cliente int,
-    ID_Empresa int,
+    --ID_Empresa int,
     foreign key (ID_Cliente) references TB_Cliente(ID_Cliente),
-    foreign key (ID_Empresa) references TB_Empresa(ID_Empresa)
+    --foreign key (ID_Empresa) references TB_Empresa(ID_Empresa)
 );
