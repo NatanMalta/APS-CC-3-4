@@ -49,19 +49,13 @@ public class FrmConsulta extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         
-        
-        
-       
-        
         tudoDAO.pedido();
         
         List<Cliente> clientes = tudoDAO.clientes;
         List<Endereco> enderecos = tudoDAO.enderecos;
         List<Pedido> pedidos = tudoDAO.pedidos;
         
-        for (int i = 0; i < clientes.size(); i++) {
-            
-           
+        for (int i = 0; i < clientes.size(); i++) {      
             Cliente cliente =  clientes.get(i);
             Endereco endereco = enderecos.get(i);
             Pedido pedid = pedidos.get(i);
@@ -69,16 +63,9 @@ public class FrmConsulta extends javax.swing.JDialog {
              modelo.addRow(new Object[]
             {
                 pedid.getID_Pedido(), cliente.getNm_Cliente() , endereco.getNm_Rua() , endereco.getNm_Bairro() , endereco.getNr_Lat() , endereco.getNr_Lon() , "", "Sorocaba"
-            });
-            
-            
-            
-            
-        }
-        
+            });    
+        }    
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +79,10 @@ public class FrmConsulta extends javax.swing.JDialog {
         lbNome = new javax.swing.JLabel();
         txfNome = new javax.swing.JTextField();
         btnPesquisarCliente = new javax.swing.JButton();
+        btnConsulta = new javax.swing.JButton();
+        btnMerge = new javax.swing.JButton();
+        btnQuick = new javax.swing.JButton();
+        btnUtil = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -116,6 +107,19 @@ public class FrmConsulta extends javax.swing.JDialog {
             }
         });
 
+        btnConsulta.setText("Consulta");
+
+        btnMerge.setText("Merge");
+        btnMerge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMergeActionPerformed(evt);
+            }
+        });
+
+        btnQuick.setText("Quick");
+
+        btnUtil.setText("Util");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,7 +130,15 @@ public class FrmConsulta extends javax.swing.JDialog {
                     .addComponent(lbNome, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txfNome)
                     .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-                .addContainerGap(709, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUtil, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +146,12 @@ public class FrmConsulta extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsulta)
+                    .addComponent(btnMerge)
+                    .addComponent(btnQuick)
+                    .addComponent(btnUtil))
                 .addGap(18, 18, 18)
                 .addComponent(btnPesquisarCliente)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -185,9 +202,13 @@ public class FrmConsulta extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(60);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(180);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(220);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(220);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -226,7 +247,7 @@ public class FrmConsulta extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,6 +272,30 @@ public class FrmConsulta extends javax.swing.JDialog {
         preencheTabela();
         
     }//GEN-LAST:event_btnPesquisarClienteActionPerformed
+
+    private void btnMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMergeActionPerformed
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        tudoDAO.pedido();
+        
+        List<Cliente> clientes = tudoDAO.clientes;
+        List<Endereco> enderecos = tudoDAO.enderecos;
+        List<Pedido> pedidos = tudoDAO.pedidos;
+        
+        for (int i = 0; i < clientes.size(); i++) {      
+            Cliente cliente =  clientes.get(i);
+            Endereco endereco = enderecos.get(i);
+            Pedido pedid = pedidos.get(i);
+            
+             modelo.addRow(new Object[]
+            {
+                pedid.getID_Pedido(), cliente.getNm_Cliente() , endereco.getNm_Rua() , endereco.getNm_Bairro() , endereco.getNr_Lat() , endereco.getNr_Lon() , "", "Sorocaba"
+            });    
+        }
+        
+    }//GEN-LAST:event_btnMergeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,7 +340,11 @@ public class FrmConsulta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsulta;
+    private javax.swing.JButton btnMerge;
     private javax.swing.JButton btnPesquisarCliente;
+    private javax.swing.JButton btnQuick;
+    private javax.swing.JButton btnUtil;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
