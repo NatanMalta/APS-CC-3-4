@@ -6,6 +6,7 @@
 package aps_dados.DAL;
 
 import static aps_dados.DAL.ClienteDAO.mensagem;
+import aps_dados.model.Capturar;
 import aps_dados.model.Cliente;
 import aps_dados.model.Endereco;
 import aps_dados.model.Pedido;
@@ -22,9 +23,12 @@ import java.util.List;
  */
 public class tudoDAO {
     
-    public static List<Cliente> clientes = new ArrayList<>();
+    /*public static List<Cliente> clientes = new ArrayList<>();
     public static List<Pedido> pedidos = new ArrayList<>();
-    public static List<Endereco> enderecos = new ArrayList<>();
+    public static List<Endereco> enderecos = new ArrayList<>();*/
+    
+   public static List<Capturar> captura = new ArrayList<>();
+   private static final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
     
     
     public static void pedido() {
@@ -40,29 +44,32 @@ public class tudoDAO {
             while(resultado.next()) {
                 
                 
-                Cliente novoCliente = new Cliente();
+                Capturar novoCaptura = new Capturar();
+                
+                /*Cliente novoCliente = new Cliente();
                 Endereco novoEndereco = new Endereco();
-                Pedido novoPedido = new Pedido();
+                Pedido novoPedido = new Pedido();*/
                 
                 
-                novoCliente.setNm_Cliente(resultado.getString("Nm_Cliente"));
+                novoCaptura.setNm_Cliente(resultado.getString("Nm_Cliente"));
                 
-                novoEndereco.setNm_Rua(resultado.getString("Nm_Rua"));
-                novoEndereco.setNm_Bairro(resultado.getString("Nm_Bairro"));
-                novoEndereco.setNr_Lat(resultado.getString("Nr_Lat"));
-                novoEndereco.setNr_Lon(resultado.getString("Nr_Lon"));
-                novoEndereco.setNm_Cidade(resultado.getString("Nm_Cidade"));
+                novoCaptura.setNm_Rua(resultado.getString("Nm_Rua"));
+                novoCaptura.setNm_Bairro(resultado.getString("Nm_Bairro"));
+                novoCaptura.setNr_Lat(resultado.getString("Nr_Lat"));
+                novoCaptura.setNr_Lon(resultado.getString("Nr_Lon"));
+                novoCaptura.setNm_Cidade(resultado.getString("Nm_Cidade"));
                 
-                novoPedido.setID_Pedido(resultado.getInt("ID_Pedido"));
+                novoCaptura.setID_Pedido(resultado.getInt("ID_Pedido"));
+                novoCaptura.setNr_Distancia( distance(-23.500385,-47.4620022, Double.parseDouble(resultado.getString("Nr_Lat")),
+                        Double.parseDouble(resultado.getString("Nr_Lon"))) );
                 
-                clientes.add(novoCliente);
-                pedidos.add(novoPedido);
-                enderecos.add(novoEndereco);
+                captura.add(novoCaptura);
+                //@-23.500385,-47.4620022
                 
                 
             }
-            mensagem = "Sua pesquisa retornou  resultados.";
-            System.out.println(enderecos.size());
+            mensagem = "Sua pesquisa retornou " + captura.size()  +  " resultados.";
+            
             
         }
         catch (SQLException e) {
@@ -73,4 +80,26 @@ public class tudoDAO {
     
     
     
-}
+    
+    
+
+    public static double distance(double startLat, double startLong,double endLat, double endLong)
+    {
+
+        double dLat  = Math.toRadians((endLat - startLat));
+        double dLong = Math.toRadians((endLong - startLong));
+
+        startLat = Math.toRadians(startLat);
+        endLat   = Math.toRadians(endLat);
+
+        double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return EARTH_RADIUS * c; // <-- d
+    }
+
+    public static double haversin(double val)
+    {
+        return Math.pow(Math.sin(val / 2), 2);
+    }
+    }

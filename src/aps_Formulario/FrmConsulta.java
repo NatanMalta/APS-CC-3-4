@@ -7,6 +7,7 @@ package aps_Formulario;
 
 import aps_dados.DAL.ClienteDAO;
 import aps_dados.DAL.tudoDAO;
+import aps_dados.model.Capturar;
 import aps_dados.model.Cliente;
 import aps_dados.model.Controle;
 import aps_dados.model.Endereco;
@@ -55,20 +56,21 @@ public class FrmConsulta extends javax.swing.JDialog {
         
         tudoDAO.pedido();
         
-        List<Cliente> clientes = tudoDAO.clientes;
+        /*List<Cliente> clientes = tudoDAO.clientes;
         List<Endereco> enderecos = tudoDAO.enderecos;
-        List<Pedido> pedidos = tudoDAO.pedidos;
+        List<Pedido> pedidos = tudoDAO.pedidos;*/
         
-        for (int i = 0; i < clientes.size(); i++) {
+        for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
-           
-            Cliente cliente =  clientes.get(i);
+            Capturar cap = tudoDAO.captura.get(i);
+            
+            /*Cliente cliente =  clientes.get(i);
             Endereco endereco = enderecos.get(i);
-            Pedido pedid = pedidos.get(i);
+            Pedido pedid = pedidos.get(i);*/
             
              modelo.addRow(new Object[]
             {
-                pedid.getID_Pedido(), cliente.getNm_Cliente() , endereco.getNm_Rua() , endereco.getNm_Bairro() , endereco.getNr_Lat() , endereco.getNr_Lon() , "", "Sorocaba"
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
             });
             
             
