@@ -71,7 +71,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnQuick" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnUtil" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="btnInsertion" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace pref="159" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -87,7 +87,7 @@
                       <Component id="btnConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnMerge" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnQuick" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnUtil" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnInsertion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnPesquisarCliente" min="-2" max="-2" attributes="0"/>
@@ -132,11 +132,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Quick"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuickActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnUtil">
+        <Component class="javax.swing.JButton" name="btnInsertion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Util"/>
+            <Property name="text" type="java.lang.String" value="Insertion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

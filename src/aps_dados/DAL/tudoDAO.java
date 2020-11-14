@@ -36,8 +36,8 @@ public class tudoDAO {
     public static void pedido() {
         mensagem = "";
         try {
+            captura = new ArrayList<>();
             Connection con = Conexao.getCon();
-            
             String instrucao = "select p.ID_Pedido, c.Nm_Cliente, e.Nm_Rua, e.Nm_Bairro, e.Nr_Lat, e.Nr_Lon, e.Nm_Cidade from TB_Cliente as c inner join TB_Pedido as p on c.ID_Cliente = p.ID_Cliente inner join TB_Endereco as e on c.ID_Endereco = e.ID_Endereco";
             PreparedStatement stmt = con.prepareStatement(instrucao);
 
@@ -85,22 +85,22 @@ public class tudoDAO {
     
     
 
-    public static double distance(double startLat, double startLong,double endLat, double endLong)
+    public static Double distance(Double startLat, Double startLong,Double endLat, Double endLong)
     {
 
-        double dLat  = Math.toRadians((endLat - startLat));
-        double dLong = Math.toRadians((endLong - startLong));
+        Double dLat  = Math.toRadians((endLat - startLat));
+        Double dLong = Math.toRadians((endLong - startLong));
 
         startLat = Math.toRadians(startLat);
         endLat   = Math.toRadians(endLat);
 
-        double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        Double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
+        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return EARTH_RADIUS * c; // <-- d
     }
 
-    public static double haversin(double val)
+    public static Double haversin(Double val)
     {
         return Math.pow(Math.sin(val / 2), 2);
     }

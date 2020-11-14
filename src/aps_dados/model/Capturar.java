@@ -17,11 +17,11 @@ public class Capturar implements Comparable<Capturar>
     private String Nm_Bairro;
     private String Nr_Lat;
     private String Nr_Lon;
-    private double Nr_Distancia;
+    private Double Nr_Distancia;
     private String Nm_Cidade;
     @Override
     public int compareTo(Capturar alvo) {
-        return (int)(this.getNr_Distancia() - alvo.getNr_Distancia());
+        return (int)(this.getNr_Distancia()*1000 - alvo.getNr_Distancia()*1000);
     }
 
     public int getID_Pedido() {
@@ -76,7 +76,7 @@ public class Capturar implements Comparable<Capturar>
         return Nr_Distancia;
     }
 
-    public void setNr_Distancia(double Nr_Distancia) {
+    public void setNr_Distancia(Double Nr_Distancia) {
         this.Nr_Distancia = Nr_Distancia;
     }
 

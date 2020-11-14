@@ -11,8 +11,10 @@ import aps_dados.model.Capturar;
 import aps_dados.model.Cliente;
 import aps_dados.model.Controle;
 import aps_dados.model.Endereco;
+import aps_dados.model.Insertion;
 import aps_dados.model.Merge;
 import aps_dados.model.Pedido;
+import aps_dados.model.Quick;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -52,7 +54,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
-        Merge.sort(tudoDAO.captura);
+        
         
         
         /*List<Cliente> clientes = tudoDAO.clientes;
@@ -79,6 +81,61 @@ public class FrmConsulta extends javax.swing.JDialog {
         }
         
     }
+    void MergeOrganizate(){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        tudoDAO.pedido();
+        Merge.sort(tudoDAO.captura);
+        
+        for (int i = 0; i < tudoDAO.captura.size(); i++) {
+            
+            Capturar cap = (Capturar) tudoDAO.captura.get(i);
+            
+             modelo.addRow(new Object[]
+            {
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+            });
+
+        }
+    }
+    void QuickOrganizate()
+    {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        tudoDAO.pedido();
+        Quick.sort(tudoDAO.captura);
+        
+        for (int i = 0; i < tudoDAO.captura.size(); i++) {
+            
+            Capturar cap = (Capturar) tudoDAO.captura.get(i);
+            
+             modelo.addRow(new Object[]
+            {
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+            });
+
+        }
+    }
+    void InsertionOrganizate(){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        tudoDAO.pedido();
+        Insertion.sort(tudoDAO.captura);
+        
+        for (int i = 0; i < tudoDAO.captura.size(); i++) {
+            
+            Capturar cap = (Capturar) tudoDAO.captura.get(i);
+            
+             modelo.addRow(new Object[]
+            {
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+            });
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,7 +152,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         btnConsulta = new javax.swing.JButton();
         btnMerge = new javax.swing.JButton();
         btnQuick = new javax.swing.JButton();
-        btnUtil = new javax.swing.JButton();
+        btnInsertion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -130,8 +187,18 @@ public class FrmConsulta extends javax.swing.JDialog {
         });
 
         btnQuick.setText("Quick");
+        btnQuick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuickActionPerformed(evt);
+            }
+        });
 
-        btnUtil.setText("Util");
+        btnInsertion.setText("Insertion");
+        btnInsertion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,7 +217,7 @@ public class FrmConsulta extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnUtil, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,7 +231,7 @@ public class FrmConsulta extends javax.swing.JDialog {
                     .addComponent(btnConsulta)
                     .addComponent(btnMerge)
                     .addComponent(btnQuick)
-                    .addComponent(btnUtil))
+                    .addComponent(btnInsertion))
                 .addGap(18, 18, 18)
                 .addComponent(btnPesquisarCliente)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -287,8 +354,18 @@ public class FrmConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarClienteActionPerformed
 
     private void btnMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMergeActionPerformed
-        
+
+        MergeOrganizate();
     }//GEN-LAST:event_btnMergeActionPerformed
+
+    private void btnQuickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuickActionPerformed
+        QuickOrganizate();
+    }//GEN-LAST:event_btnQuickActionPerformed
+
+    private void btnInsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertionActionPerformed
+        InsertionOrganizate();
+        
+    }//GEN-LAST:event_btnInsertionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,10 +411,10 @@ public class FrmConsulta extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsulta;
+    private javax.swing.JButton btnInsertion;
     private javax.swing.JButton btnMerge;
     private javax.swing.JButton btnPesquisarCliente;
     private javax.swing.JButton btnQuick;
-    private javax.swing.JButton btnUtil;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

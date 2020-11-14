@@ -26,7 +26,7 @@ public class Util {
         else if((j < 0) || (j >= a.size())) return false;
         Comparable auxiliary;
         auxiliary = a.get(i);
-        a.set(i, j);
+        a.set(i, a.get(j));
         a.set(j, auxiliary);
         return true;
     }
