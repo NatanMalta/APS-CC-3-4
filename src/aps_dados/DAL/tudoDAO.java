@@ -27,7 +27,9 @@ public class tudoDAO {
     public static List<Pedido> pedidos = new ArrayList<>();
     public static List<Endereco> enderecos = new ArrayList<>();*/
     
-   public static List<Capturar> captura = new ArrayList<>();
+   //public static List<Capturar> captura = new ArrayList<>();
+    public static List<Comparable> captura = new ArrayList<>();
+    
    private static final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
     
     

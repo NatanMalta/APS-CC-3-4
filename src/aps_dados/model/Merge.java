@@ -25,7 +25,7 @@ public class Merge {
         merge(a, low, mid, high);
     }
     public static void merge(List<Comparable> a, int low, int mid, int high) {
-        int i = low, j = (high + 1);
+        int i = low, j = (mid + 1);
         for(int k = low; k <= high; k++) {
             auxiliary[k] = a.get(k);
         }

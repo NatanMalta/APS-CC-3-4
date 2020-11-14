@@ -11,6 +11,7 @@ import aps_dados.model.Capturar;
 import aps_dados.model.Cliente;
 import aps_dados.model.Controle;
 import aps_dados.model.Endereco;
+import aps_dados.model.Merge;
 import aps_dados.model.Pedido;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +52,8 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
+        Merge.sort(tudoDAO.captura);
+        
         
         /*List<Cliente> clientes = tudoDAO.clientes;
         List<Endereco> enderecos = tudoDAO.enderecos;
@@ -58,7 +61,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
-            Capturar cap = tudoDAO.captura.get(i);
+            Capturar cap = (Capturar) tudoDAO.captura.get(i);
             
             /*Cliente cliente =  clientes.get(i);
 >>>>>>> c850a035f41745ade7cf4530b75d3b1ede13a0ca
