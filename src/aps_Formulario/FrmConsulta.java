@@ -86,7 +86,10 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
+        long tinicial = System.currentTimeMillis();
         Merge.sort(tudoDAO.captura);
+        long tfinal = System.currentTimeMillis();
+        lbTimeMarge.setText(String.valueOf(tfinal-tinicial));
         
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
@@ -105,8 +108,10 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
+        long tinicial = System.currentTimeMillis();
         Quick.sort(tudoDAO.captura);
-        
+        long tfinal = System.currentTimeMillis();
+        lbTimeMarge.setText(String.valueOf(tfinal-tinicial));
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
             Capturar cap = (Capturar) tudoDAO.captura.get(i);
@@ -123,6 +128,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
+        
         Insertion.sort(tudoDAO.captura);
         
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
@@ -135,6 +141,7 @@ public class FrmConsulta extends javax.swing.JDialog {
             });
 
         }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,6 +160,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         btnMerge = new javax.swing.JButton();
         btnQuick = new javax.swing.JButton();
         btnInsertion = new javax.swing.JButton();
+        lbTimeMarge = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -200,6 +208,8 @@ public class FrmConsulta extends javax.swing.JDialog {
             }
         });
 
+        lbTimeMarge.setText("Time");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,11 +223,14 @@ public class FrmConsulta extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbTimeMarge))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,8 +245,13 @@ public class FrmConsulta extends javax.swing.JDialog {
                     .addComponent(btnMerge)
                     .addComponent(btnQuick)
                     .addComponent(btnInsertion))
-                .addGap(18, 18, 18)
-                .addComponent(btnPesquisarCliente)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisarCliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lbTimeMarge)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -421,6 +439,7 @@ public class FrmConsulta extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbTimeMarge;
     private javax.swing.JTextField txfNome;
     // End of variables declaration//GEN-END:variables
 }
