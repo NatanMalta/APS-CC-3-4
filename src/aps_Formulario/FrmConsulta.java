@@ -56,10 +56,6 @@ public class FrmConsulta extends javax.swing.JDialog {
         List<Endereco> enderecos = tudoDAO.enderecos;
         List<Pedido> pedidos = tudoDAO.pedidos;*/
         
-<<<<<<< HEAD
-        for (int i = 0; i < clientes.size(); i++) {      
-            Cliente cliente =  clientes.get(i);
-=======
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
             Capturar cap = tudoDAO.captura.get(i);
@@ -71,11 +67,6 @@ public class FrmConsulta extends javax.swing.JDialog {
             
              modelo.addRow(new Object[]
             {
-<<<<<<< HEAD
-                pedid.getID_Pedido(), cliente.getNm_Cliente() , endereco.getNm_Rua() , endereco.getNm_Bairro() , endereco.getNr_Lat() , endereco.getNr_Lon() , "", "Sorocaba"
-            });    
-        }    
-=======
                 cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
             });
             
@@ -84,7 +75,6 @@ public class FrmConsulta extends javax.swing.JDialog {
             
         }
         
->>>>>>> c850a035f41745ade7cf4530b75d3b1ede13a0ca
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -294,26 +284,6 @@ public class FrmConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarClienteActionPerformed
 
     private void btnMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMergeActionPerformed
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setNumRows(0);
-        
-        tudoDAO.pedido();
-        
-        List<Cliente> clientes = tudoDAO.clientes;
-        List<Endereco> enderecos = tudoDAO.enderecos;
-        List<Pedido> pedidos = tudoDAO.pedidos;
-        
-        for (int i = 0; i < clientes.size(); i++) {      
-            Cliente cliente =  clientes.get(i);
-            Endereco endereco = enderecos.get(i);
-            Pedido pedid = pedidos.get(i);
-            
-             modelo.addRow(new Object[]
-            {
-                pedid.getID_Pedido(), cliente.getNm_Cliente() , endereco.getNm_Rua() , endereco.getNm_Bairro() , endereco.getNr_Lat() , endereco.getNr_Lon() , "", "Sorocaba"
-            });    
-        }
         
     }//GEN-LAST:event_btnMergeActionPerformed
 
