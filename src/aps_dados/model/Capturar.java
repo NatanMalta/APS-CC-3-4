@@ -8,7 +8,7 @@ import aps_dados.DAL.tudoDAO;
  */
 
 
-public class Capturar
+public class Capturar implements Comparable<Capturar>
 {
     
     private int ID_Pedido;
@@ -19,6 +19,10 @@ public class Capturar
     private String Nr_Lon;
     private double Nr_Distancia;
     private String Nm_Cidade;
+    @Override
+    public int compareTo(Capturar alvo) {
+        return (this.getNr_Distancia() - alvo.getNr_Distancia());
+    }
 
     public int getID_Pedido() {
         return ID_Pedido;
