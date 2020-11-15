@@ -22,13 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author muril
  */
-public class FrmConsulta extends javax.swing.JDialog {
+public class FrmConsulta extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmConsulta
      */
     public FrmConsulta(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
     }
     
