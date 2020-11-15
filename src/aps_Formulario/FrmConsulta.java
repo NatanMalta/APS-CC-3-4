@@ -17,6 +17,8 @@ import aps_dados.model.Pedido;
 import aps_dados.model.Quick;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import java.lang.Math;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -48,6 +50,7 @@ public class FrmConsulta extends javax.swing.JFrame {
     
     void preencheTabela()
     {
+        DecimalFormat f = new DecimalFormat("#.##");
         //tblPesquisaPessoas.setModel(new DefaultTableModel(new Object[][]{}, new String[] {"ID", "NOME", "RG", "CPF"}));
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
@@ -71,7 +74,7 @@ public class FrmConsulta extends javax.swing.JFrame {
             
              modelo.addRow(new Object[]
             {
-                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , f.format(cap.getNr_Distancia())+"km", "Sorocaba"
             });
             
             
@@ -81,6 +84,7 @@ public class FrmConsulta extends javax.swing.JFrame {
         
     }
     void MergeOrganizate(){
+        DecimalFormat f = new DecimalFormat("#.##");
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         
@@ -96,13 +100,14 @@ public class FrmConsulta extends javax.swing.JFrame {
             
              modelo.addRow(new Object[]
             {
-                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , f.format(cap.getNr_Distancia())+"km", "Sorocaba"
             });
 
         }
     }
     void QuickOrganizate()
     {
+        DecimalFormat f = new DecimalFormat("#.##");
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         
@@ -117,12 +122,13 @@ public class FrmConsulta extends javax.swing.JFrame {
             
              modelo.addRow(new Object[]
             {
-                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , f.format(cap.getNr_Distancia())+"km" , "Sorocaba"
             });
 
         }
     }
     void InsertionOrganizate(){
+        DecimalFormat f = new DecimalFormat("#.##");
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         
@@ -137,7 +143,7 @@ public class FrmConsulta extends javax.swing.JFrame {
             
              modelo.addRow(new Object[]
             {
-                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , cap.getNr_Distancia(), "Sorocaba"
+                cap.getID_Pedido(), cap.getNm_Cliente() , cap.getNm_Rua() , cap.getNm_Bairro() , cap.getNr_Lat() , cap.getNr_Lon() , f.format(cap.getNr_Distancia())+"km", "Sorocaba"
             });
 
         }
@@ -153,10 +159,7 @@ public class FrmConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbNome = new javax.swing.JLabel();
-        txfNome = new javax.swing.JTextField();
         btnPesquisarCliente = new javax.swing.JButton();
-        btnConsulta = new javax.swing.JButton();
         btnMerge = new javax.swing.JButton();
         btnQuick = new javax.swing.JButton();
         btnInsertion = new javax.swing.JButton();
@@ -172,22 +175,12 @@ public class FrmConsulta extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lbNome.setText("Digite o Nome");
-
-        txfNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfNomeActionPerformed(evt);
-            }
-        });
-
         btnPesquisarCliente.setText("Pesquisar");
         btnPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarClienteActionPerformed(evt);
             }
         });
-
-        btnConsulta.setText("Consulta");
 
         btnMerge.setText("Merge");
         btnMerge.addActionListener(new java.awt.event.ActionListener() {
@@ -222,49 +215,36 @@ public class FrmConsulta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lbNome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txfNome)
-                    .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbTimeMarge))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbTimeQuick))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTimeInsertion)
-                    .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                    .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsulta)
                     .addComponent(btnMerge)
                     .addComponent(btnQuick)
-                    .addComponent(btnInsertion))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisarCliente))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbTimeMarge)
-                            .addComponent(lbTimeQuick)
-                            .addComponent(lbTimeInsertion))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(btnInsertion)
+                    .addComponent(btnPesquisarCliente))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTimeMarge)
+                    .addComponent(lbTimeQuick)
+                    .addComponent(lbTimeInsertion))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -332,7 +312,7 @@ public class FrmConsulta extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -345,9 +325,9 @@ public class FrmConsulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 948, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,15 +335,12 @@ public class FrmConsulta extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfNomeActionPerformed
 
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
         /*
@@ -438,7 +415,6 @@ public class FrmConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsulta;
     private javax.swing.JButton btnInsertion;
     private javax.swing.JButton btnMerge;
     private javax.swing.JButton btnPesquisarCliente;
@@ -448,10 +424,8 @@ public class FrmConsulta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbTimeInsertion;
     private javax.swing.JLabel lbTimeMarge;
     private javax.swing.JLabel lbTimeQuick;
-    private javax.swing.JTextField txfNome;
     // End of variables declaration//GEN-END:variables
 }
