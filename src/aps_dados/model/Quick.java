@@ -22,7 +22,7 @@ public class Quick {
         sort(a, j + 1, high);
     }
     public static int partition(List<Comparable> a, int low, int high) {
-        int i = low, j = high;
+        int i = low, j = high + 1;
         Comparable v = a.get(low);
         while(true) {
             while(Util.menor(a.get(++i), v)) {

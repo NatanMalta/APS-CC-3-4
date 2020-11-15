@@ -111,7 +111,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         long tinicial = System.currentTimeMillis();
         Quick.sort(tudoDAO.captura);
         long tfinal = System.currentTimeMillis();
-        lbTimeMarge.setText(String.valueOf(tfinal-tinicial));
+        lbTimeQuick.setText(String.valueOf(tfinal-tinicial));
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
             Capturar cap = (Capturar) tudoDAO.captura.get(i);
@@ -128,9 +128,10 @@ public class FrmConsulta extends javax.swing.JDialog {
         modelo.setNumRows(0);
         
         tudoDAO.pedido();
-        
+        long tinicial = System.currentTimeMillis();
         Insertion.sort(tudoDAO.captura);
-        
+        long tfinal = System.currentTimeMillis();
+        lbTimeInsertion.setText(String.valueOf(tfinal-tinicial));
         for (int i = 0; i < tudoDAO.captura.size(); i++) {
             
             Capturar cap = (Capturar) tudoDAO.captura.get(i);
@@ -161,6 +162,8 @@ public class FrmConsulta extends javax.swing.JDialog {
         btnQuick = new javax.swing.JButton();
         btnInsertion = new javax.swing.JButton();
         lbTimeMarge = new javax.swing.JLabel();
+        lbTimeQuick = new javax.swing.JLabel();
+        lbTimeInsertion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -210,6 +213,10 @@ public class FrmConsulta extends javax.swing.JDialog {
 
         lbTimeMarge.setText("Time");
 
+        lbTimeQuick.setText("Time");
+
+        lbTimeInsertion.setText("Time");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,13 +231,16 @@ public class FrmConsulta extends javax.swing.JDialog {
                 .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbTimeMarge))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTimeQuick))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbTimeInsertion)
+                    .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,7 +261,10 @@ public class FrmConsulta extends javax.swing.JDialog {
                         .addComponent(btnPesquisarCliente))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(lbTimeMarge)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbTimeMarge)
+                            .addComponent(lbTimeQuick)
+                            .addComponent(lbTimeInsertion))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -299,9 +312,7 @@ public class FrmConsulta extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(180);
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(220);
             jTable1.getColumnModel().getColumn(3).setPreferredWidth(220);
@@ -439,7 +450,9 @@ public class FrmConsulta extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbTimeInsertion;
     private javax.swing.JLabel lbTimeMarge;
+    private javax.swing.JLabel lbTimeQuick;
     private javax.swing.JTextField txfNome;
     // End of variables declaration//GEN-END:variables
 }

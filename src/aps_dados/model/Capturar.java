@@ -21,7 +21,7 @@ public class Capturar implements Comparable<Capturar>
     private String Nm_Cidade;
     @Override
     public int compareTo(Capturar alvo) {
-        return (int)(this.getNr_Distancia()*1000 - alvo.getNr_Distancia()*1000);
+        return (int)(this.getNr_Distancia()*1000000 - alvo.getNr_Distancia()*1000000);
     }
 
     public int getID_Pedido() {

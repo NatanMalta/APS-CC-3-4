@@ -68,14 +68,18 @@
                   <Component id="btnConsulta" min="-2" pref="126" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btnMerge" min="-2" pref="123" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnQuick" min="-2" pref="120" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnInsertion" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lbTimeMarge" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMerge" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="lbTimeMarge" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnQuick" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="lbTimeQuick" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbTimeInsertion" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnInsertion" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="159" max="32767" attributes="0"/>
               </Group>
@@ -101,7 +105,11 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="lbTimeMarge" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbTimeMarge" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTimeQuick" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbTimeInsertion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
@@ -158,6 +166,16 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbTimeMarge">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Time"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbTimeQuick">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Time"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbTimeInsertion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Time"/>
           </Properties>
@@ -229,12 +247,12 @@
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="180" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="180" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
