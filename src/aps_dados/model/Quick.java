@@ -25,16 +25,16 @@ public class Quick {
         int i = low, j = high;
         Comparable v = a.get(low);
         while(true) {
-            while(Util.maior(v, a.get(++i))) {
+            while(Util.menor(a.get(++i), v)) {
                 if (i == high) break;
             }
-            while(Util.menor(v, a.get(--j))) {
+            while(Util.maior(a.get(--j), v)) {
                 if (j == low) break;
             }
             if(i >= j) break;
             Util.trocar(a, i, j);
         }
-        Util.trocar(a, i, j);
+        Util.trocar(a, low, j);
         return j;
     }
 }
