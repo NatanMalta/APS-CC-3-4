@@ -15,11 +15,9 @@ public class Insertion {
     public static void sort(List<Comparable> a) {
         int n = a.size();
         if (n == 1) return;
-        Comparable key;
         for(int i = 1; i < n; i++) {
-            key = a.get(i);
-            for(int j = (i - 1); (j >= 0 && Util.menor(key, a.get(j))); j--) {
-                Util.trocar(a, i, j);
+            for(int j = (i - 1); (j >= 0 && Util.menor(a.get(j), a.get(j - 1))); j--) {
+                Util.trocar(a, (j - 1), j);
             }
         }
     }
